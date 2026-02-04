@@ -1,7 +1,7 @@
 ﻿using var arquivo = new FileStream("C:\\Users\\clash\\source\\repos\\ManipulaçãodeDados\\ManipulaçãodeDados\\musicas.csv", FileMode.Open, FileAccess.Read);
 using var leitor = new StreamReader(arquivo);
 
-var musicas = Obtermusicas(leitor);
+var musicas = Obtermusicas(leitor).FiltrarPorArtista("Adele");
 exibirMusicas(musicas);
 void exibirMusicas(IEnumerable<Musica> musicas)
 {
@@ -20,19 +20,32 @@ IEnumerable<Musica> Obtermusicas(StreamReader leitor)
     while (linha is not null)
     {
         var dados = linha.Split(';');
-        yield return new Musica
+        var musica=  new Musica
         {
             Nome = dados[0],
             Artista = dados[1],
             Duracao = int.Parse(dados[2])
         };
+            yield return musica;
         linha = leitor.ReadLine();
         
 
     }
 }
-
-class Musica()
+public static class Musicaextensions
+{
+    public static IEnumerable<Musica> FiltrarPorArtista(this IEnumerable<Musica> musicas, string artista)
+    {
+        foreach (var musica in musicas)
+        {
+            if (musica.Artista == artista)
+            {
+                yield return musica;
+            }
+        }
+    }
+}
+public class Musica()
 {
     public string Nome { get; set; }
     public string Artista { get; set; }
