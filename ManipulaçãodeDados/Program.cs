@@ -44,6 +44,16 @@ public static class Musicaextensions
             }
         }
     }
+    public static IEnumerable<Musica> FiltrarPorNome(this IEnumerable<Musica> musicas, string nome)
+    {
+        foreach (var musica in musicas)
+        {
+            if (musica.Nome == nome)
+            {
+                yield return musica;
+            }
+        }
+    }
 }
 public class Musica()
 {
