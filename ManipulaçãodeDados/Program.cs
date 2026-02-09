@@ -51,6 +51,7 @@ public static class Musicaextensions
             if (musica.Nome == nome)
             {
                 yield return musica;
+
             }
         }
     }
