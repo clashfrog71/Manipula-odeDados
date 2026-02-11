@@ -21,6 +21,7 @@ IEnumerable<Musica> Obtermusicas(StreamReader leitor)
     {
         var dados = linha.Split(';');
         var musica=  new Musica
+
         {
             Nome = dados[0],
             Artista = dados[1],
