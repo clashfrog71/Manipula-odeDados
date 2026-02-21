@@ -52,3 +52,4 @@ public class Musica()
     public string Artista { get; set; }
     public int Duracao { get; set; }
 }
+
