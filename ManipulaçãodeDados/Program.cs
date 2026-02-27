@@ -1,9 +1,11 @@
 ﻿using var arquivo = new FileStream("C:\\Users\\clash\\source\\repos\\ManipulaçãodeDados\\ManipulaçãodeDados\\musicas.csv", FileMode.Open, FileAccess.Read);
 using var leitor = new StreamReader(arquivo);
 
-var musicas = Obtermusicas(leitor).FirstOrDefault()
-    ;
-exibirMusicas(musicas);
+var musicas = Obtermusicas(leitor).Select(a => a.Artista).Distinct();
+foreach (var artista in musicas)
+{
+    Console.WriteLine($"Artista: {artista}");
+}
 void exibirMusicas(IEnumerable<Musica> musicas)
 {
     foreach (var musica in musicas)
