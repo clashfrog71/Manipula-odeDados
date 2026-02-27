@@ -1,7 +1,8 @@
 ﻿using var arquivo = new FileStream("C:\\Users\\clash\\source\\repos\\ManipulaçãodeDados\\ManipulaçãodeDados\\musicas.csv", FileMode.Open, FileAccess.Read);
 using var leitor = new StreamReader(arquivo);
 
-var musicas = Obtermusicas(leitor).FirstOrDefault();
+var musicas = Obtermusicas(leitor).FirstOrDefault()
+    ;
 exibirMusicas(musicas);
 void exibirMusicas(IEnumerable<Musica> musicas)
 {
