@@ -2,9 +2,10 @@
 using var leitor = new StreamReader(arquivo);
 
 var musicas = Obtermusicas(leitor).Select(a => a.Artista).Distinct();
-foreach (var artista in musicas)
+var generos = Obtermusicas(leitor).SelectMany(m => m.Generos).Distinct();
+foreach (var genero in generos)
 {
-    Console.WriteLine($"Artista: {artista}");
+    Console.WriteLine($"Genero: {genero}");
 }
 void exibirMusicas(IEnumerable<Musica> musicas)
 {
@@ -28,7 +29,8 @@ IEnumerable<Musica> Obtermusicas(StreamReader leitor)
         {
             Nome = dados[0],
             Artista = dados[1],
-            Duracao = int.Parse(dados[2])
+            Duracao = int.Parse(dados[2]),
+            Generos = dados[3].Split(',').Select(g => g.Trim())
         };
             yield return musica;
         linha = leitor.ReadLine();
@@ -54,5 +56,6 @@ public class Musica()
     public string Nome { get; set; }
     public string Artista { get; set; }
     public int Duracao { get; set; }
+    public IEnumerable<string> Generos { get; set; }
 }
 
