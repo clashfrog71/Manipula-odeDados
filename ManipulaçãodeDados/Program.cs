@@ -7,6 +7,15 @@ foreach (var genero in generos)
 {
     Console.WriteLine($"Genero: {genero}");
 }
+void EstatiticasDeMusicas(StreamReader stream)
+{
+    var musicas = Obtermusicas(stream);
+    Console.WriteLine($"\nexistem x musicas na coleção");
+    Console.WriteLine($"\nexistem x musicas com mais de 10 minutos de duração");
+    Console.WriteLine($"\na menor musica tem x segundos");
+    Console.WriteLine($"\na maior musica tem x segundos");
+
+}
 void exibirMusicas(IEnumerable<Musica> musicas)
 {
     foreach (var musica in musicas)
