@@ -3,17 +3,15 @@ using var leitor = new StreamReader(arquivo);
 
 var musicas = Obtermusicas(leitor).Select(a => a.Artista).Distinct();
 var generos = Obtermusicas(leitor).SelectMany(m => m.Generos).Distinct();
-var musicas2 = Obtermusicas(leitor).Min(x => x.Duracao);
-exibirMusicas(musicas2);
+EstatiticasDeMusicas(leitor);
 
- 
 void EstatiticasDeMusicas(StreamReader stream)
 {
     var musicas = Obtermusicas(stream).ToList();
     Console.WriteLine($"\nexistem {musicas.Count()} musicas na coleção");
     Console.WriteLine($"\nexistem {musicas.Count(x => x.Duracao >=600 )} musicas com mais de 10 minutos de duração");
-    //Console.WriteLine($"\na menor musica: {musicas.Min(x=> x.Nome)} tem {musicas.Min(x => x.Duracao)} segundos");
-    Console.WriteLine($"\na maior musica  tem {musicas.Max(x=> x.Duracao)} segundos");
+    Console.WriteLine($"\na menor musica: {musicas.MinBy(x=> x.Duracao).Nome} tem {musicas.Min(x => x.Duracao)} segundos");
+    Console.WriteLine($"\na maior musica: {musicas.MaxBy(x=> x.Duracao).Nome}  tem {musicas.Max(x=> x.Duracao)} segundos");
 
 }
 void exibirMusicas(IEnumerable<Musica> musicas)
