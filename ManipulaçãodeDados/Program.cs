@@ -3,13 +3,16 @@ using var leitor = new StreamReader(arquivo);
 
 var musicas = Obtermusicas(leitor).Select(a => a.Artista).Distinct();
 var generos = Obtermusicas(leitor).SelectMany(m => m.Generos).Distinct();
-var artista = Obtermusicas(leitor).GroupBy(x => x.Artista);
-foreach (var a in artista)
+void ExibirMusicasDeArtistas(StreamReader leitor)
 {
-    Console.WriteLine($"exibindo musicas de {a.Key}");
-    foreach (var musica in a)
+    var artista = Obtermusicas(leitor).GroupBy(x => x.Artista);
+    foreach (var a in artista)
     {
-        Console.WriteLine($"Musica: {musica.Nome} - Duração: {musica.Duracao} segundos");
+        Console.WriteLine($"exibindo musicas de {a.Key}");
+        foreach (var musica in a)
+        {
+            Console.WriteLine($"Musica: {musica.Nome} - Duração: {musica.Duracao} segundos");
+        }
     }
 }
 
