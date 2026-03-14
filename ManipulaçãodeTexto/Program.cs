@@ -21,6 +21,7 @@ if (numerodeCaracteres >= 8 ||
     Console.WriteLine("senha forte");
 }
 
+
 else
 {
     Console.WriteLine("senha fraca");
