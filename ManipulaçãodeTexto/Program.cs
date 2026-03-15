@@ -12,11 +12,10 @@ var senhaPossuiNumero = senha.Count(a => char.IsDigit(a));
 var senhaPossuiSimbolo = senha.Count(a => char.IsLetterOrDigit(a));
 
 if (numerodeCaracteres >= 8 ||
-    senhaPossuiMaiuscula = 1 ||
-    senhaPossuiMinuscula = 1 ||
-    senhaPossuiNumero = 1 ||
-    senhaPossuiSimbolo = 1
-    )
+    senhaPossuiMaiuscula == 1 ||
+    senhaPossuiMinuscula == 1 ||
+    senhaPossuiNumero == 1 ||
+    senhaPossuiSimbolo == 1)
 {
     Console.WriteLine("senha forte");
 }
