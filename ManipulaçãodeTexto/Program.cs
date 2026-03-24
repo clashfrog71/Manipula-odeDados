@@ -2,7 +2,7 @@
 using var stream = new StreamReader(arquivo);
 
 var musicas = ObterMusicas(stream)
-    .Where(x => x.Artista == "The Beatles")
+    .Where(x => x.Artista.Equals("ColdPlay", StringComparison.CurrentCultureIgnoreCase))
     .Take(50);
 
 var senha = "123";
