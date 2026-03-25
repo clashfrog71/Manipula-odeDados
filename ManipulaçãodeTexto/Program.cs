@@ -1,32 +1,37 @@
 ﻿using var arquivo = new FileStream("musicas.csv", FileMode.Open, FileAccess.Read);
 using var stream = new StreamReader(arquivo);
 
-var musicas = ObterMusicas(stream)
-    .Where(x => x.Artista.Equals("ColdPlay", StringComparison.CurrentCultureIgnoreCase))
-    .Take(50);
-
-var senha = "123";
-var numerodeCaracteres = senha.Length;
-var senhaPossuiMaiuscula = senha.Count(a => char.IsUpper(a));
-var senhaPossuiMinuscula = senha.Count(a => char.IsLower(a));
-var senhaPossuiNumero = senha.Count(a => char.IsDigit(a));
-var senhaPossuiSimbolo = senha.Count(a => char.IsLetterOrDigit(a));
-
-if (numerodeCaracteres >= 8 ||
-    senhaPossuiMaiuscula == 1 ||
-    senhaPossuiMinuscula == 1 ||
-    senhaPossuiNumero == 1 ||
-    senhaPossuiSimbolo == 1)
+void VerificarSenha()
 {
-    Console.WriteLine("senha forte");
+
+    var senha = "123";
+    var numerodeCaracteres = senha.Length;
+    var senhaPossuiMaiuscula = senha.Count(a => char.IsUpper(a));
+    var senhaPossuiMinuscula = senha.Count(a => char.IsLower(a));
+    var senhaPossuiNumero = senha.Count(a => char.IsDigit(a));
+    var senhaPossuiSimbolo = senha.Count(a => char.IsLetterOrDigit(a));
+
+    if (numerodeCaracteres >= 8 ||
+        senhaPossuiMaiuscula == 1 ||
+        senhaPossuiMinuscula == 1 ||
+        senhaPossuiNumero == 1 ||
+        senhaPossuiSimbolo == 1)
+    {
+        Console.WriteLine("senha forte");
+    }
+
 }
-
-
 
 
 else
 {
     Console.WriteLine("senha fraca");
+}
+void ComparandoStrings(StreamReader stream)
+{
+    var musicas = ObterMusicas(stream)
+    .Where(x => x.Artista.Equals("ColdPlay", StringComparison.CurrentCultureIgnoreCase))
+    .Take(50);
 }
 void ExibirMusicas(IEnumerable<Musica> musicas)
 {
