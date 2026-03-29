@@ -20,12 +20,14 @@ void VerificarSenha()
         Console.WriteLine("senha forte");
     }
 
-}
 
 
-else
-{
-    Console.WriteLine("senha fraca");
+
+
+    else
+    {
+        Console.WriteLine("senha fraca");
+    }
 }
 void ComparandoStrings(StreamReader stream)
 {
