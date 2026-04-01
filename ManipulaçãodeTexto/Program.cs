@@ -19,11 +19,6 @@ void VerificarSenha()
     {
         Console.WriteLine("senha forte");
     }
-
-
-
-
-
     else
     {
         Console.WriteLine("senha fraca");
@@ -51,15 +46,17 @@ IEnumerable<Musica> ObterMusicas(StreamReader stream)
     while (linha is not null)
     {
         var partes = linha.Split(';');
+        if (partes.Length == 5) {
         var musica = new Musica
         {
             Titulo = partes[0],
             Artista = partes[1],
-            Duracao = Convert.ToInt32(partes[2]),
+            Duracao = int.TryParse(partes[2], out int duracaoConvertida) ? duracaoConvertida : 350,
             Generos = partes[3].Split(',').Select(g => g.Trim()),
-            Lancamento = Convert.ToDateTime(partes[4])
+            Lancamento = DateTime.TryParse(partes[4], out var lancamentoConvertido) ? lancamentoConvertido : DateTime.Today
         };
         yield return musica;
+    }
         linha = stream.ReadLine();
     }
 }
