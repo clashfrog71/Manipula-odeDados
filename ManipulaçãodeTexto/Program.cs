@@ -49,8 +49,8 @@ IEnumerable<Musica> ObterMusicas(StreamReader stream)
         if (partes.Length == 5) {
         var musica = new Musica
         {
-            Titulo = partes[0],
-            Artista = partes[1],
+            Titulo = string.IsNullOrWhiteSpace(partes[0]) ? "Titulo não encontrado" : partes[0],
+            Artista = string.IsNullOrEmpty(partes[1])?"Artista não encontrado" : partes[1],
             Duracao = int.TryParse(partes[2], out int duracaoConvertida) ? duracaoConvertida : 350,
             Generos = partes[3].Split(',').Select(g => g.Trim()),
             Lancamento = DateTime.TryParse(partes[4], out var lancamentoConvertido) ? lancamentoConvertido : DateTime.Today
