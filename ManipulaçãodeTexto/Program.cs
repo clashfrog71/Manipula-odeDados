@@ -1,6 +1,18 @@
-﻿using var arquivo = new FileStream("musicas.csv", FileMode.Open, FileAccess.Read);
+﻿using System.Text.RegularExpressions;
+
+using var arquivo = new FileStream("musicas.csv", FileMode.Open, FileAccess.Read);
 using var stream = new StreamReader(arquivo);
 
+var texto = "The Broken Road;Rolling Stones;3:99;Rock, Blues Rock";
+var regex = Regex.Match(texto, @"\d:\d\d");
+
+if (regex.Success)
+{
+    Console.WriteLine($"A duração da música é {regex.Value}");
+}else
+{
+    Console.WriteLine("A duração da música não foi encontrada");
+}
 void VerificarSenha()
 {
 
