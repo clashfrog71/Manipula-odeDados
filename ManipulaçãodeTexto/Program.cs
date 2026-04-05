@@ -13,6 +13,7 @@ if (regex.Success)
 {
     Console.WriteLine("A duração da música não foi encontrada");
 }
+
 void VerificarSenha()
 {
 
