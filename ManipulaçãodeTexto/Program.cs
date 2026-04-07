@@ -8,6 +8,8 @@ var regex = Regex.Match(texto, @"\d:\d\d");
 
 if (regex.Success)
 {
+    var minutos = regex.Groups[1];
+    var segundos = regex.Groups[2];
     Console.WriteLine($"A duração da música é {regex.Value}");
 }else
 {
