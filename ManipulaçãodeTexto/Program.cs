@@ -3,6 +3,8 @@
 using var arquivo = new FileStream("musicas.csv", FileMode.Open, FileAccess.Read);
 using var stream = new StreamReader(arquivo);
 
+var linha = stream.ReadLine();
+var partes = linha.Split(';');
 int duracao = 0;
 var texto = "The Broken Road;Rolling Stones;3:99;Rock, Blues Rock";
 var regex = Regex.Match(texto, @"\d?\d:\d\d");
@@ -13,6 +15,17 @@ if (regex.Success)
     var segundos = int.Parse(regex.Groups[2].Value);
     Console.WriteLine($"A duração da música é {duracao}");
     duracao = (minutos*60) + segundos;
+}
+if (partes.Length == 5)
+{
+    var musica = new Musica
+    {
+        Titulo = partes[0],
+        Artista = partes[1],
+        Duracao = duracao,
+        Generos = partes[3].Split(',').Select(g => g.Trim()),
+        Lancamento = DateTime.TryParse(partes[4], out var lancamentoConvertido) ? lancamentoConvertido : DateTime.Today
+    };
 }
 
 
