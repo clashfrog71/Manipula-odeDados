@@ -9,6 +9,12 @@ int duracao = 0;
 var texto = "The Broken Road;Rolling Stones;3:99;Rock, Blues Rock";
 var regex = Regex.Match(texto, @"\d?\d:\d\d");
 
+var artistas = ObterMusicas(stream)
+    .Where(x=> Regex.IsMatch(x.Artista, @"[^a-zA-z0-9]"))
+    .Select(x => x.Artista)
+    .Distinct()
+    .OrderBy(x => x);
+foreach (var artist in artistas) Console.WriteLine(artist);
 if (regex.Success)
 {
     var minutos = int.Parse(regex.Groups[1].Value);
