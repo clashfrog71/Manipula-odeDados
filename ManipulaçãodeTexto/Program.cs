@@ -6,8 +6,7 @@ using var stream = new StreamReader(arquivo);
 var linha = stream.ReadLine();
 var partes = linha.Split(';');
 int duracao = 0;
-var texto = "The Broken Road;Rolling Stones;3:99;Rock, Blues Rock";
-var regex = Regex.Match(texto, @"\d?\d:\d\d");
+var regex = Regex.Match(linha, @"\d?\d:\d\d");
 
 var artistas = ObterMusicas(stream)
     .Where(x=> Regex.IsMatch(x.Artista, @"[^a-zA-z0-9]"))
