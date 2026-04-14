@@ -8,12 +8,17 @@ var partes = linha.Split(';');
 int duracao = 0;
 var regex = Regex.Match(linha, @"\d?\d:\d\d");
 
-var artistas = ObterMusicas(stream)
-    .Where(x=> Regex.IsMatch(x.Artista, @"[^a-zA-z0-9]"))
+void artistasComCaracteresEspeciais()
+{
+    var regex = new Regex(@"[^a-zA-Z0-9]");
+    var artistas = ObterMusicas(stream)
+
+    .Where(x => regex.IsMatch(x.Artista))
     .Select(x => x.Artista)
     .Distinct()
     .OrderBy(x => x);
-foreach (var artist in artistas) Console.WriteLine(artist);
+    foreach (var artist in artistas) Console.WriteLine(artist);
+}
 if (regex.Success)
 {
     var minutos = int.Parse(regex.Groups[1].Value);
