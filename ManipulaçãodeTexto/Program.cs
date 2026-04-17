@@ -107,3 +107,4 @@ class Musica
     public IEnumerable<string> Generos { get; set; }
     public DateTime Lancamento { get; set; }
 }
+
