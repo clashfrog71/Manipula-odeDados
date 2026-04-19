@@ -3,4 +3,5 @@
   <Project Path="LINQ/LINQ.csproj" Id="1ee66ed6-36fb-45f3-a985-48767ddbee26" />
   <Project Path="ManipulaçãodeDados/ManipulaçãodeDados.csproj" />
   <Project Path="ManipulaçãodeTexto/ManipulaçãodeTexto.csproj" Id="5212708b-921b-4846-a00c-1b6d3522685d" />
+  <Project Path="Serialização/Serialização.csproj" Id="b58987c7-b6df-4418-b111-bee61c5e3e07" />
 </Solution>
